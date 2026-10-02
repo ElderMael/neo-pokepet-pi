@@ -1,0 +1,64 @@
+{
+	"name": "@eldermael/neo-pokepet-pi",
+	"version": "1.7.0",
+	"bin": {
+		"neo-pokepet-pi": "./scripts/cli.js",
+		"neo-pets": "./scripts/cli.js",
+		"neo-pet": "./scripts/cli.js"
+	},
+	"description": "A cute, colorful pet companion for the pi coding agent. Use classic ASCII pets or Petdex image pets that live below your editor and react to tools, tests, commits, PRs, reviews, subagents, model swaps and more.",
+	"keywords": [
+		"pi-package",
+		"pi",
+		"pi-extension",
+		"petdex",
+		"codex-pets",
+		"pet",
+		"tamagotchi",
+		"statusline",
+		"image",
+		"ascii",
+		"companion"
+	],
+	"license": "MIT",
+	"author": "eldermael",
+	"homepage": "https://github.com/eldermael/neo-pokepet-pi#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eldermael/neo-pokepet-pi.git"
+	},
+	"bugs": {
+		"url": "https://github.com/eldermael/neo-pokepet-pi/issues"
+	},
+	"pi": {
+		"extensions": [
+			"./extensions/index.ts"
+		],
+		"image": "https://raw.githubusercontent.com/eldermael/neo-pokepet-pi/main/demo.png"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*"
+	},
+	"scripts": {
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"test": "node --test --import tsx tests/*.test.ts",
+		"check-version": "node scripts/check-version-bump.js"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.16",
+		"tsx": "^4.22.3"
+	},
+	"files": [
+		"extensions",
+		"scripts/cli.js",
+		"README.md",
+		"LICENSE",
+		"CHANGELOG.md"
+	],
+	"dependencies": {
+		"@earendil-works/pi-tui": "^0.77.0",
+		"electron": "^42.3.3",
+		"sharp": "^0.33.5"
+	}
+}
