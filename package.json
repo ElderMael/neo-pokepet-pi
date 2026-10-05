@@ -22,13 +22,13 @@
 	],
 	"license": "MIT",
 	"author": "eldermael",
-	"homepage": "https://github.com/eldermael/neo-pokepet-pi#readme",
+	"homepage": "https://github.com/ElderMael/neo-pokepet-pi#readme",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/eldermael/neo-pokepet-pi.git"
+		"url": "git+https://github.com/ElderMael/neo-pokepet-pi.git"
 	},
 	"bugs": {
-		"url": "https://github.com/eldermael/neo-pokepet-pi/issues"
+		"url": "https://github.com/ElderMael/neo-pokepet-pi/issues"
 	},
 	"pi": {
 		"extensions": [
