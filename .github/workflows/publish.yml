@@ -12,7 +12,7 @@ jobs:
   publish:
     name: Publish Package
     runs-on: ubuntu-latest
-    environment: poke pet
+    environment: pokepet
 
     steps:
       - name: Checkout
@@ -28,6 +28,9 @@ jobs:
 
       - name: Run Biome check
         run: npm run lint
+
+      - name: Check NPM_TOKEN presence
+        run: echo "NPM_TOKEN length: ${#NPM_TOKEN}"
 
       - name: Configure npm auth
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
