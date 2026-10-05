@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0 - Initial npm release
+
+- First public release of `@eldermael/neo-pokepet-pi` on npm.
+- Publishes the full pet companion: classic ASCII pets and Petdex
+  image pets that live below your editor and react to tools, tests,
+  commits, PRs, reviews, subagents, model swaps and more.
+- Tagged `pi-package` so it is discoverable in the [pi.dev package
+  gallery](https://pi.dev/packages); install with
+  `pi install npm:@eldermael/neo-pokepet-pi`.
+- All features from the 1.7.x development line ship in this release,
+  including in-terminal sprite mode, rolling usage bars, and the
+  Electron desktop companion.
+- Versioning restarts at 0.1.0 for the npm release line; the 1.x
+  entries below document the prior development history.
+
 ## 1.7.0 - In-terminal sprite mode + rolling usage bars
 
 ### Added
