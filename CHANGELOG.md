@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0 - CI publishing via OIDC trusted publishing
+
+- No user-facing changes. This release verifies the new release path:
+  `publish.yml` now publishes from GitHub Actions using OIDC trusted
+  publishing (`id-token: write` + npm trusted publisher) instead of a
+  stored `NPM_TOKEN` secret. Only pushes to `main` trigger it, and the
+  npm-side trust is bound to this exact repo and workflow file.
+- The published tarball carries an npm provenance attestation.
+
 ## 0.1.0 - Initial npm release
 
 - First public release of `@eldermael/neo-pokepet-pi` on npm.
