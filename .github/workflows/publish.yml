@@ -12,7 +12,6 @@ jobs:
   publish:
     name: Publish Package
     runs-on: ubuntu-latest
-    environment: pokepet
 
     steps:
       - name: Checkout
