@@ -31,7 +31,13 @@ jobs:
 
       - name: Check NPM_TOKEN presence
         run: |
-          echo "NPM_TOKEN length: ${#NPM_TOKEN}"
+          if [ -z "${NPM_TOKEN+x}" ]; then
+            echo "NPM_TOKEN is UNSET in the job environment"
+          else
+            echo "NPM_TOKEN is set, length ${#NPM_TOKEN}"
+          fi
+          echo "--- all env var names ---"
+          env | cut -d= -f1 | sort
 
       - name: Configure npm auth
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
