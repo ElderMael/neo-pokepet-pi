@@ -1,6 +1,6 @@
 {
 	"name": "@eldermael/neo-pokepet-pi",
-	"version": "1.7.0",
+	"version": "0.1.0",
 	"bin": {
 		"neo-pokepet-pi": "scripts/cli.js",
 		"neo-pets": "scripts/cli.js",
