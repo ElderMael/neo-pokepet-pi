@@ -2,9 +2,9 @@
 	"name": "@eldermael/neo-pokepet-pi",
 	"version": "1.7.0",
 	"bin": {
-		"neo-pokepet-pi": "./scripts/cli.js",
-		"neo-pets": "./scripts/cli.js",
-		"neo-pet": "./scripts/cli.js"
+		"neo-pokepet-pi": "scripts/cli.js",
+		"neo-pets": "scripts/cli.js",
+		"neo-pet": "scripts/cli.js"
 	},
 	"description": "A cute, colorful pet companion for the pi coding agent. Use classic ASCII pets or Petdex image pets that live below your editor and react to tools, tests, commits, PRs, reviews, subagents, model swaps and more.",
 	"keywords": [
