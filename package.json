@@ -1,6 +1,6 @@
 {
 	"name": "@eldermael/neo-pokepet-pi",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"bin": {
 		"neo-pokepet-pi": "scripts/cli.js",
 		"neo-pets": "scripts/cli.js",
@@ -37,7 +37,8 @@
 		"image": "https://raw.githubusercontent.com/eldermael/neo-pokepet-pi/main/demo.png"
 	},
 	"peerDependencies": {
-		"@earendil-works/pi-coding-agent": "*"
+		"@earendil-works/pi-coding-agent": "*",
+		"@earendil-works/pi-tui": "*"
 	},
 	"scripts": {
 		"lint": "biome check .",
@@ -57,7 +58,6 @@
 		"CHANGELOG.md"
 	],
 	"dependencies": {
-		"@earendil-works/pi-tui": "^0.77.0",
 		"electron": "^42.3.3",
 		"sharp": "^0.33.5"
 	}

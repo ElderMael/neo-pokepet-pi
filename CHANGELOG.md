@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 - Declare `@earendil-works/pi-tui` as a peer dependency
+
+- Pi supplies `@earendil-works/pi-tui` to extensions, so it must be
+  declared in `peerDependencies` with a `"*"` range instead of
+  `dependencies`. A bundled copy could bypass Pi's extension module
+  mapping and create duplicate runtime modules, which made pi warn
+  on load. No runtime behavior changes.
+
 ## 0.2.0 - CI publishing via OIDC trusted publishing
 
 - No user-facing changes. This release verifies the new release path:
