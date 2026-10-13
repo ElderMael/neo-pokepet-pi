@@ -21,13 +21,13 @@ It has two visual styles:
 ## Install
 
 ```bash
-pi install npm:@eldermael:neo-pokepet-pi
+pi install npm:@eldermael/neo-pokepet-pi
 ```
 
 Try it for one run:
 
 ```bash
-pi -e npm:@eldermael:neo-pokepet-pi
+pi -e npm:@eldermael/neo-pokepet-pi
 ```
 
 ## Commands
