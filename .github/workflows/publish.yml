@@ -3,6 +3,17 @@ name: Publish to NPM
 on:
   push:
     branches: [main]
+    # Only publish when files that ship in the npm tarball change.
+    # demo.png is served to the pi.dev gallery directly from GitHub raw
+    # via pi.image, so image-only changes do not need an npm release.
+    paths:
+      - package.json
+      - package-lock.json
+      - extensions/**
+      - scripts/cli.js
+      - README.md
+      - LICENSE
+      - CHANGELOG.md
 
 permissions:
   contents: read
