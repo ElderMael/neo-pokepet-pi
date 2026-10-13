@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 - Correct scoped package name in install docs
+
+- The install instructions in the README now use the slash form
+  (`npm:@eldermael/neo-pokepet-pi`) for the scoped package name. No
+  runtime behavior changes.
+
 ## 0.2.1 - Declare `@earendil-works/pi-tui` as a peer dependency
 
 - Pi supplies `@earendil-works/pi-tui` to extensions, so it must be
