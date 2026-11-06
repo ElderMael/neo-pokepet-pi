@@ -38,7 +38,9 @@
 - Versioning restarts at 0.1.0 for the npm release line; the 1.x
   entries below document the prior development history.
 
-## 1.7.0 - In-terminal sprite mode + rolling usage bars
+## Previous versions
+
+### 1.7.0 - In-terminal sprite mode + rolling usage bars
 
 ### Added
 
@@ -60,14 +62,14 @@
 - Re-wired the previously dormant native/ANSI Petdex terminal renderers into the render path behind the new `terminal` style.
 - Added `extensions/usage.ts` plus tests for cap parsing, token formatting, and rolling-window bucketing.
 
-## 1.6.4 - Linux companion fixes (duplicate windows & always-on-top)
+### 1.6.4 - Linux companion fixes (duplicate windows & always-on-top)
 
 - Fixed two Electron companion windows appearing in a single terminal on Linux. The companion is spawned detached so it survives the agent, but when pi exited uncleanly (terminal closed, SIGKILL, crash) `session_shutdown` never ran to kill it, leaving an orphan window that stacked with the next session's window. The manager now records the live companion's PID in `~/.pi/agent/pokepet-electron.pid` and, once at startup, reaps a verified leftover pokepet window before spawning a new one. The PID is validated against the companion's `main.cjs` path so a recycled PID is never killed, and reaping only runs at startup so two genuinely concurrent pi sessions don't fight over one window.
 - Fixed the companion never staying above other apps on Linux/Wayland. On a Wayland session (e.g. GNOME) Electron defaulted to the native Wayland backend, where the protocol has **no way for a client to request always-on-top or to position itself** — so `setAlwaysOnTop()` was a silent no-op and the window couldn't anchor bottom-right. The companion is now spawned with the **X11/XWayland** backend forced (`--ozone-platform=x11` as a real launch arg plus stripping `WAYLAND_DISPLAY` from the child env), which Mutter/KWin honor for `_NET_WM_STATE_ABOVE` and client geometry. (Setting the switch from inside `main.cjs` was too late — Ozone had already picked a platform.)
 - Strengthened always-on-top once on XWayland: the window marks itself visible on all workspaces (including fullscreen) and re-asserts on-top on a light interval and on every `blur`, so the WM can't quietly demote it after a focus change or a fullscreen app. Re-assertion runs on Linux only; macOS/Windows honor it once.
 - Hardened window creation against a rare double-create and cleaned up the always-on-top guard timer when the window closes.
 
-## 1.6.3 - Self-healing Electron runtime, Linux window fixes & CLI aliases
+### 1.6.3 - Self-healing Electron runtime, Linux window fixes & CLI aliases
 
 - Fixed the `Electron binary not found` error spam on fresh installs. Because pi installs extensions with `npm install -g --ignore-scripts`, Electron's binary download postinstall never ran, so the companion window could not launch (most visible on Linux). The extension now provisions the runtime itself at first use.
 - Added a self-healing Electron bootstrap: on first image-mode launch the extension verifies the real binary (via `path.txt`, not just the `.bin` shim), and if it is missing, downloads it once in the background using Electron's own installer (with an `npm install electron --no-save` fallback). It forces `ignore-scripts=false` so it works even when the user's npmrc disables scripts.
@@ -80,7 +82,7 @@
 - Added crash-loop protection: if the window dies within seconds twice (e.g. missing system libs like `libnss3`/`libgbm`), the pet falls back to ASCII and reports the reason in `/pet status` instead of relaunching on every render.
 - Added a `pi-pet` CLI alias alongside `pi-pets` and `pi-pokepet`. Note: `npx` resolves by package name, so the canonical install-a-pet command is `npx pi-pokepet add <slug>`; the `pi-pet`/`pi-pets` aliases work when the package is installed locally.
 
-## 1.6.2 - Electron Companion, Personalities, & Smart Notifications
+### 1.6.2 - Electron Companion, Personalities, & Smart Notifications
 
 - Added a transparent premium Electron companion window with a floating glassmorphic speech bubble for image style pets.
 - Implemented deterministic buddy personality stats (Chaos, Curiosity, Snark) and rarity tiers (Common, Rare, Legendary) calculated from slug and nickname.
@@ -92,7 +94,7 @@
 - Implemented low energy click reaction (sad/flat failed animation and frantic vertical bounce with hurting quotes).
 - Resolved global manifest cache pollution bug during testing by isolating `MANIFEST_CACHE_FILE` to `PI_POKEPET_PETDEX_DIR` when set.
 
-## 1.6.0 - Native Petdex image rendering
+### 1.6.0 - Native Petdex image rendering
 
 - Added a native Petdex renderer that extracts full sprite-sheet frames as PNGs
   and renders them through Pi's TUI `Image` component on Kitty/iTerm2-compatible
@@ -114,7 +116,7 @@
   sequences, unsupported-terminal fallback detection, and display budgets.
 - Added `@earendil-works/pi-tui` as a direct runtime dependency.
 
-## 1.5.0 - Petdex image pets
+### 1.5.0 - Petdex image pets
 
 - Added `/pet` as the new command surface and removed `/pokemon` registration.
 - Added Petdex image mode with `/pet style image`, local `~/.codex/pets`
@@ -136,12 +138,12 @@
 - Added tests for Petdex metadata validation, sprite rendering, mood mapping,
   state migration, and mocked gallery install.
 
-## 1.4.1
+### 1.4.1
 
 - Replaced the generic working-line text with pet-aware, repo-aware messages so Pi feels more like a playful coding companion during active work.
 - Improved contrast on the working/status text so it reads more clearly in the terminal UI.
 
-## 1.4.0 — detailed mode
+### 1.4.0 — detailed mode
 
 ### Added
 
@@ -180,17 +182,17 @@
 - `extensions/mons.ts` now exports `EYES`, `WEAK_EYES`, and `THOUGHTS` so both
   the compact and detailed renderers share one animation vocabulary.
 
-## 1.3.1
+### 1.3.1
 
 - Switch to secure, passwordless NPM OIDC Trusted Publishing to bypass 2FA safely.
 - Enhanced release checks script to automatically bypass on pure CI/CD or chore Pull Requests.
 
-## 1.3.0
+### 1.3.0
 
 - Added automated package version bump validation check.
 - Added automated CHANGELOG.md modification verification check.
 
-## 1.2.0 — keep-awake
+### 1.2.0 — keep-awake
 
 - **Keep your system awake:** `/pokemon awake [reason]` stops the machine from
   sleeping while something runs in the background — cross-platform with no
@@ -201,7 +203,7 @@
 - New vigilant **guard** mood (☕) shown while keep-awake is active; the pet
   refuses to sleep and a persistent `☕ awake` marker appears on the meter.
 
-## 1.1.0 — reactive update
+### 1.1.0 — reactive update
 
 - **Real "thinking" mood:** splits the model stream by event type, so reasoning
   (`thinking_*`) now floats with a 💭 thought bubble — distinct from talking
@@ -217,27 +219,10 @@
 - **No more dozing mid-run:** the pet stays animated for the full duration of a
   long-running tool (bash/tests) instead of reverting to idle.
 
-## 1.0.0 — final release
+### 1.0.0 — final release
 
 - README: full roster gallery showing every Pokémon's ASCII art with its type
   color, plus a colored banner image.
 - Cross-platform: normalize Windows path separators in file-type detection so
   directory-based reactions (e.g. `tests/`) work on Windows as well as
   macOS/Linux. Uses only Node builtins — runs on macOS, Linux, and Windows.
-
-## 0.1.0 — initial release
-
-- 7 Pokémon companions: Pikachu, Charmander, Squirtle, Bulbasaur, Eevee,
-  Jigglypuff, Psyduck — each with its own color, type, and personality lines.
-- 7 animated moods (appear / talk / work / celebrate / panic / sleep).
-- Spinning Poké Ball working indicator.
-- Reacts to tools: tests, git (commit/push/pull/merge/rebase/stash/checkout),
-  build, lint, install, dev-server, docker, network, search, dangerous commands.
-- Reacts to PRs & reviews (`gh pr create/merge/review`, review/diff tools).
-- Reacts to pi advanced features: subagents, model swaps, thinking-level changes,
-  session forks, and compaction.
-- File-aware (filename + type) and time-aware (morning/evening/late-night/weekend).
-- Flow-state and struggle/redemption detection.
-- Energy meter (`♥`) restored with `/pokemon feed`.
-- Cross-session memory with bond tiers (stranger → bestie) and `/pokemon stats`.
-- `/pokemon` command suite: list, choose, nick, feed, stats, hide, show.
