@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.3 - Stop replaying old development releases on startup
+
+- Fixed pi showing the entire pre-npm `1.x` history as new changelog entries
+  on every session start. pi compares numeric `##` headings against the
+  last-seen package version, and `1.7.0` is greater than `0.2.2`, so those
+  entries never stopped looking new.
+- Moved the `1.7.0` through `1.0.0` entries under a `## Previous versions`
+  section as `###` headings, which pi ignores, and removed the duplicate
+  trailing `0.1.0` entry. The full changelog is still included in the
+  published package.
+
 ## 0.2.2 - Correct scoped package name in install docs
 
 - The install instructions in the README now use the slash form
